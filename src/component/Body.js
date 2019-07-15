@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import Activityboard from './Activityboard';
 import Banner from './Banner';
 import AddListModal from './AddListModal';
-const kanbanData = require('../mytrello.json');
-let data = kanbanData;
+const trelloData = require('../mytrello.json');
+let data = trelloData;
 export default class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      kanban: kanbanData,
+      trello: trelloData,
       openModal: false
     }
     this.onDropEvent = this.onDropEvent.bind(this);
@@ -49,7 +49,7 @@ export default class Body extends Component {
         }
       }
       this.setState({
-        kanban: data
+        trello: data
       })
     }
   }
@@ -61,7 +61,7 @@ export default class Body extends Component {
       }
     }
     this.setState({
-      kanban: data
+      trello: data
     })
   }
   updateCard(desc, id){
@@ -77,7 +77,7 @@ export default class Body extends Component {
       }
     }
     this.setState({
-      kanban: data
+      trello: data
     })
   }
   deleteCard(id, list){
@@ -98,7 +98,7 @@ export default class Body extends Component {
       }
     }
     this.setState({
-      kanban: data
+      trello: data
     })
   }
   deleteList(listname){
@@ -108,13 +108,13 @@ export default class Body extends Component {
       }
     }
     this.setState({
-      kanban: data
+      trello: data
     })
   }
   renderList() {
     const activityList = [];
-    for (let key in this.state.kanban) {
-      activityList.push(<Activityboard backlogData={this.state.kanban[key]} listName={key} key={key} onDropEvent={this.onDropEvent} createCardBody={this.createNewCard} updateCard={this.updateCard} deleteCardData={this.deleteCard} deleteList={this.deleteList}/>)
+    for (let key in this.state.trello) {
+      activityList.push(<Activityboard backlogData={this.state.trello[key]} listName={key} key={key} onDropEvent={this.onDropEvent} createCardBody={this.createNewCard} updateCard={this.updateCard} deleteCardData={this.deleteCard} deleteList={this.deleteList}/>)
     }
     return <div className="body-scroller">
       {activityList}
@@ -133,9 +133,9 @@ export default class Body extends Component {
   createNewList(e){
     let sampleData =  {};
     sampleData[e] = [];
-    data = Object.assign({},this.state.kanban,sampleData);
+    data = Object.assign({},this.state.trello,sampleData);
     this.setState({
-      kanban: data
+      trello: data
     });
   }
   render() {
