@@ -8,7 +8,7 @@
     "react": "^16.8.6",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "reactstrap": "^7.1.0",
     "typescript": "^3.5.3",
     "typescriptnpm": "^1.0.1"
